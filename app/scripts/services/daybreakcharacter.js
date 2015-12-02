@@ -15,6 +15,6 @@ angular.module('highTechRecruitmentApp')
       getByBR: function (battlerank,itt) {
         return $http(
           {method:"GET"
-          ,url:'https://census.daybreakgames.com/s:BlueLegacy/get/ps2:v2/character/?faction_id='+factionId+'&battle_rank.value='+battlerank+'&c:start='+itt+'&c:resolve=outfit'});
+          ,url:'https://census.daybreakgames.com/s:BlueLegacy/get/ps2:v2/character/?faction_id='+factionId+'&battle_rank.value='+battlerank+'&c:start='+itt+'&c:resolve=outfit,world'});
       }};
   });
