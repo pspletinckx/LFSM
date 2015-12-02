@@ -11,16 +11,18 @@ angular.module('highTechRecruitmentApp')
   .controller('MainCtrl',['$scope', 'daybreakCharacter', function ($scope,daybreakCharacter) {
   	$scope.kandidates = [];
   	// kandidate name, battlerank, online, last played
-  	var effort = 2000;
-
-  	for (var i = 1; i<=effort;i++) {
- 		console.log(i); 		
+  	 	var nextPlayer = function(i){
  			  	daybreakCharacter.getByBR(100,i).then(
 			  		function(data){
-			  			console.log(data);
-			  			console.log(data.data.character_list[0]);
+			  			if (data.data.returned ==0) return;
+			  			//console.log(data);
+			  			//console.log(data.data.character_list[0]);
 			  			var character=data.data.character_list[0];
-			  			if (!character.outfit) return;
+			  			if (data.data.returned ==0) return;
+			  			nextPlayer(i+1);
+			  			if (!!character.outfit) return;
+			  			console.log(character);
+
 			  			$scope.kandidates.push(
 			  				{
 			  					name: character.name.first,
@@ -31,8 +33,6 @@ angular.module('highTechRecruitmentApp')
 			  			if (data.data.returned == 0) i=-1;
 			  		},
 			  		function(){});
-  		};
-
-
-
+ 			  };
+ 		nextPlayer(1);
   }]);
