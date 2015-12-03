@@ -4,20 +4,29 @@
 <select class="form-control"><option>Emerald</option></select>
 <input  type="checkbox"> Hide inactives</input>
 </form>
+<button class="btn btn-warning" ng-click="resetCache()">Reset cache</button>
+
+<button class="btn btn-success" ng-click="scan()">Scan</button>
 </div>
 
+
+
+
 <div class="progress">
-  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{progress}}%;">
-   {{progress}}%
+  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{getProgress()}}%;">
+   {{getProgress()}}%
   </div>
+  <p> Status: {{statusMessage}}</p>
 </div>
 
 <table class="table">
-  <tbody ng-repeat="k in kandidates">
+  <tbody ng-repeat="k in kandidates| orderBy : '-online'">
   <tr>
       <td>{{k.name}}</td>
-      <td>{{k.online}}</td>
-      <td>{{k.id}}</td>
+      <td>
+        <status>{{k.onlineText}}</status>
+        <td>{{k.online}}</td>
+      </td>
       <td>BR{{k.br}}</td>
   </tr>
 </tbody>

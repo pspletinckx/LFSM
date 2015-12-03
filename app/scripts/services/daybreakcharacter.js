@@ -8,7 +8,7 @@
  * Factory in the highTechRecruitmentApp.
  */
 angular.module('highTechRecruitmentApp')
-  .factory('daybreakCharacter', function ($http) {
+  .factory('daybreakCharacter',['$http', function ($http) {
     var factionId = 2; //New Conglomerate
     
     return {
@@ -16,5 +16,13 @@ angular.module('highTechRecruitmentApp')
         return $http(
           {method:"GET"
           ,url:'https://census.daybreakgames.com/s:BlueLegacy/get/ps2:v2/character/?faction_id='+factionId+'&battle_rank.value='+battlerank+'&c:start='+itt+'&c:resolve=outfit,world,online_status'});
-      }};
-  });
+      },
+      onlineStatus: function (playerid){
+      	return $http(
+      		{method:"GET"
+	      	,url:'https://census.daybreakgames.com/s:BlueLegacy/get/ps2:v2/characters_online_status?character_id='+playerid
+
+	      	});
+      }
+  };
+  }]);
