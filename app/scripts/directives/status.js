@@ -13,7 +13,7 @@ angular.module('highTechRecruitmentApp')
       restrict: 'E',
       controller: function($scope){
       	$scope.k.onlineText= "Loading..";
-      	console.log($scope.k.id);
+      	//console.log($scope.k.id);
        	daybreakCharacter.onlineStatus($scope.k.id)
       	.then(function(resp){
       		if(!!resp.data.error) $scope.k.online=resp.data.error;

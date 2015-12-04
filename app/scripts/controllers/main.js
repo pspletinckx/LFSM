@@ -22,7 +22,10 @@ angular.module('highTechRecruitmentApp')
   		var increment = 100 / (startBR-endBR+1)
   		$scope.progress +=increment;
   	}
-  	$cookies.put('123','test');
+    var cookieExpire = new Date();
+    cookieExpire.setDate(cookieExpire.getDate() + 7);
+
+  	$cookies.put('123','test',{expires:cookieExpire});
 
 
   	var findBattlerank=function(br){
@@ -46,7 +49,7 @@ angular.module('highTechRecruitmentApp')
 			  			if (data.data.returned == 0) { //or i = 10 test
 			  				console.log("Done with series, preserving");
                 $scope.statusMessage = "Done with series, preserving";
-			  				$cookies.putObject(battlerank,kandidates);
+			  				$cookies.putObject(battlerank,kandidates,{cookieExpire});
 			  				$scope.kandidates.push.apply($scope.kandidates,$cookies.getObject(battlerank));
 			  				doneBr();
 			  			}
@@ -73,7 +76,7 @@ angular.module('highTechRecruitmentApp')
 			  		},
 			  		function(){});
  			  };
- 		findBattlerank(100);
+ 		//findBattlerank(100);
 
  	$scope.resetCache = function(){
  		$cookies.remove(100);
@@ -81,7 +84,9 @@ angular.module('highTechRecruitmentApp')
  		//refresh
  	}
  	$scope.scan = function(){
- 		for (var i = startBR - 1; i >= endBR; i--) {
+    $scope.kandidates =[];
+    $scope.progress = 0;
+ 		for (var i = startBR; i >= endBR; i--) {
  			console.log("starting scan for br "+i)
  			findBattlerank(i);
  			};
