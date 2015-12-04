@@ -7,6 +7,8 @@
 <button class="btn btn-warning" ng-click="resetCache()">Reset cache</button>
 
 <button class="btn btn-success" ng-click="scan()">Scan</button>
+<button class="btn btn-success" ng-click="scanAsync()">Scan Async</button>
+<button class="btn btn-success" ng-click="scanInBulk()">Bulk Scan</button>
 </div>
 
 
@@ -24,7 +26,7 @@
   <tr>
       <td>{{k.name}}</td>
       <td>
-        <status>{{k.onlineText}}</status>
+        <status>{{getOnlineText()}}</status>
         <td><a ng-href="https://www.planetside2.com/players/#!/{{k.id}}" target="_blank">Planetside2/players</a></td>
       </td>
       <td>BR{{k.br}}</td>
