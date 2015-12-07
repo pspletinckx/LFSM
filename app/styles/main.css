@@ -58,6 +58,12 @@ body {
 .marketing p + h4 {
   margin-top: 28px;
 }
+.online{
+  background-color: #44FF67;
+}
+.offline{
+  background-color: #c7c3c3;
+}
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

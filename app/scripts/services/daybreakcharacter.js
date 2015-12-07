@@ -27,9 +27,12 @@ angular.module('highTechRecruitmentApp')
       },
       getAllByBR: function (battlerank) {
         return $http(
-          {method:"GET"
-          ,url:'https://census.daybreakgames.com/s:BlueLegacy/get/ps2:v2/character/?c:limit=7000&faction_id=2&battle_rank.value='+battlerank+'&c:join=character_id^outfit_member,characters_online_status,characters_world^terms:world_id=17^outer:0'});
+          {method:"JSONP"
+          ,url:'https://census.daybreakgames.com/s:BlueLegacy/get/ps2:v2/character/?c:limit=7000&faction_id=2&battle_rank.value='+battlerank+'&c:join=character_id^outfit_member,characters_online_status,characters_world^terms:world_id=17^outer:0&callback=JSON_CALLBACK'});
         //https://census.daybreakgames.com/s:BlueLegacy/get/ps2:v2/character/?c:limit=10&faction_id=2&battle_rank.value=100&c:join=character_id^outfit_member,characters_world^terms:world_id=17^outer:0
+        
+      },
+      getAllOnlineStatus: function(StringArrayIds){
         
       }
   };

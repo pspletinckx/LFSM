@@ -13,7 +13,7 @@ angular.module('highTechRecruitmentApp')
       restrict: 'E',
       controller: function($scope){
         	$scope.k.onlineText= "Loading..";
-          if($scope.k.online=='17')$scope.k.onlineText = "Online";
+          if($scope.k.online=='17') $scope.k.onlineText = "Online";
           else $scope.k.onlineText="Offline";
 
         	//console.log($scope.k.id);         

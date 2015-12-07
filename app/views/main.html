@@ -1,14 +1,16 @@
-<h3>This program will scan for vacant members</h3>
+<h3>High Battlerank Scanner</h3>
 <div class="well">
-<form>
+<!-- <form>
 <select class="form-control"><option>Emerald</option></select>
 <input  type="checkbox"> Hide inactives</input>
-</form>
-<button class="btn btn-warning" ng-click="resetCache()">Reset cache</button>
+</form> -->
+<!-- <button class="btn btn-warning" ng-click="resetCache()">Reset cache</button> -->
 
-<button class="btn btn-success" ng-click="scan()">Scan</button>
-<button class="btn btn-success" ng-click="scanAsync()">Scan Async</button>
+<!-- <button class="btn btn-success" ng-click="scan()">Scan</button>
+<button class="btn btn-success" ng-click="scanAsync()">Scan Async</button> -->
 <button class="btn btn-success" ng-click="scanInBulk()">Bulk Scan</button>
+<button class="btn btn-primary" ng-click="testBackend()">Get Players from Backend</button>
+<button class="btn btn-primary" ng-click="testResourceBackend()">Resource Backend</button>
 </div>
 
 
@@ -18,12 +20,13 @@
   <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{getProgress()}}%;">
    {{getProgress()}}%
   </div>
-  <p> Status: {{statusMessage}}</p>
+  <p>{{statusMessage}}</p>
 </div>
 
 <table class="table">
   <tbody ng-repeat="k in kandidates| orderBy : '-online'">
-  <tr>
+  <tr ng-class="{offline:k.online==0}">
+      <td>{{$index}}</td>
       <td>{{k.name}}</td>
       <td>
         <status>{{getOnlineText()}}</status>
