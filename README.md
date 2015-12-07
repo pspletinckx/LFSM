@@ -1,12 +1,6 @@
-# high-tech-recruitment
+# high-tech-recruitment / LFSM: Looking For Squad Members
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.12.1.
+This app scans the census.daybreak.com api for high level players that are not in an outfit,
+when they come online, squad members can invite them in to squad and recruiters may invite them into outfit.
 
-## Build & development
-
-Run `grunt` for building and `grunt serve` for preview.
-
-## Testing
-
-Running `grunt test` will run the unit tests with karma.
+Eventually I want to merge all planetside-related apps.
